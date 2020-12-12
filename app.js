@@ -8,8 +8,8 @@ const helmet = require('helmet');
 require("dotenv").config();
 
 const app = express();
-
-mongoose.connect('mongodb+srv://'+ process.env.DBUSER +':'+ process.env.DBPASSE +'@cluster0.5u7fb.mongodb.net/'+ process.env.DBNAME +'?retryWrites=true&w=majority',
+const dbConnect = 'mongodb+srv://'+ process.env.DBUSER +':'+ process.env.DBPASSE +'@' + process.env.DBHOST + '/'+ process.env.DBNAME +'?retryWrites=true&w=majority'
+mongoose.connect(dbConnect,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
